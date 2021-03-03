@@ -1,5 +1,6 @@
 #!/bin/bash
 # Forked from binhex's OpenVPN dockers
+# Then forked from MarkusMcNugen's work.
 set -e
 
 # check for presence of network interface docker0
@@ -21,6 +22,8 @@ fi
 if [[ $VPN_ENABLED == "yes" ]]; then
 	# create directory to store openvpn config files
 	mkdir -p /config/openvpn
+	rm *.ovpn
+	getNordVpn /config/openvpn
 	# set perms and owner for files in /config/openvpn directory
 	set +e
 	chown -R "${PUID}":"${PGID}" "/config/openvpn" &> /dev/null
