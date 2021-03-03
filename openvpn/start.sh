@@ -22,7 +22,7 @@ fi
 if [[ $VPN_ENABLED == "yes" ]]; then
 	# create directory to store openvpn config files
 	mkdir -p /config/openvpn
-	rm *.ovpn
+	rm -f /config/openvpn/*.ovpn 
 	getNordVpn /config/openvpn
 	# set perms and owner for files in /config/openvpn directory
 	set +e
